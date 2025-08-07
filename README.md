@@ -1,8 +1,20 @@
+---
+---
+title: School of Statistics - Interactive Classification Dashboards
+emoji: 📊
+colorFrom: blue
+colorTo: indigo
+sdk: streamlit
+sdk_version: "1.25.0"
+app_file: app.py
+pinned: false
+---
+
 # School of Statistics - Interactive Classification Dashboards
 
 ![Logo](./src/assets/logo.jpg)
 
-Welcome to the Interactive Classification Dashboards project ! This repository contains a set of tools designed to help users understand the core concepts of binary classification in machine learning through hands-on, visual interaction.
+Welcome to the Interactive Classification Dashboards project! This repository contains a set of tools designed to help users understand the core concepts of binary classification in machine learning through hands-on, visual interaction.
 
 ## 🚀 About This Project
 
