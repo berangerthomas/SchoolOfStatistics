@@ -19,7 +19,7 @@ This project provides two distinct interactive dashboards:
     *   Key performance metrics (Accuracy, Precision, Recall, etc.).
     *   A detailed confusion matrix.
 
-2.  **Inverse Classification Dashboard (`inverse_classifier.html`)**: This tool works in reverse. Instead of generating data, you directly manipulate the values of the **confusion matrix** (True Positives, False Positives, True Negatives, and False Negatives). The application then simulates a distribution of classifier scores that would lead to your specified matrix and visualizes the resulting metrics, ROC curve, and score distribution. This provides a unique, intuitive way to understand the relationships between the confusion matrix and other performance indicators.
+2.  **Inverse Classification Dashboard (`inverse_classifier.html`)** : This tool works in reverse. Instead of generating data, you directly manipulate the values of the **confusion matrix** (True Positives, False Positives, True Negatives, and False Negatives). The application then simulates a distribution of classifier scores that would lead to your specified matrix and visualizes the resulting metrics, ROC curve, and score distribution. This provides a unique, intuitive way to understand the relationships between the confusion matrix and other performance indicators.
 
 ## 📂 Project Structure
 
