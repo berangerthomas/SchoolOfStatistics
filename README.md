@@ -4,9 +4,7 @@ title: School of Statistics - Interactive Classification Dashboards
 emoji: 📊
 colorFrom: blue
 colorTo: indigo
-sdk: streamlit
-sdk_version: "1.25.0"
-app_file: app.py
+sdk: static
 pinned: false
 ---
 
