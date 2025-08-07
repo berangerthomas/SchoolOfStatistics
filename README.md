@@ -2,7 +2,7 @@
 
 ![Logo](./src/assets/logo.jpg)
 
-Welcome to the Interactive Classification Dashboards project! This repository contains a set of tools designed to help users understand the core concepts of binary classification in machine learning through hands-on, visual interaction.
+Welcome to the Interactive Classification Dashboards project ! This repository contains a set of tools designed to help users understand the core concepts of binary classification in machine learning through hands-on, visual interaction.
 
 ## 🚀 About This Project
 
