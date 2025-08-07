@@ -1,4 +1,4 @@
-# School of Statistics - Interactive Classification Dashboards
+# [School of Statistics](https://berangerthomas.github.io/SchoolOfStatistics) - Interactive Classification Dashboards
 
 ![Logo](./src/assets/logo.jpg)
 
