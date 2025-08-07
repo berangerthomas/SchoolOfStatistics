@@ -13,7 +13,7 @@ Welcome to the Interactive Classification Dashboards project ! This repository c
 
 This project provides two distinct interactive dashboards:
 
-1.  **Direct Classification Dashboard (`direct_classifier.html`)**: This tool allows you to generate a synthetic 2D dataset for two classes. You can adjust the **class separation** and **data spread (standard deviation)** to see how these parameters affect the performance of a Gaussian Naive Bayes classifier. The dashboard visualizes:
+1.  **Direct Classification Dashboard (`direct_classifier.html`)** : This tool allows you to generate a synthetic 2D dataset for two classes. You can adjust the **class separation** and **data spread (standard deviation)** to see how these parameters affect the performance of a Gaussian Naive Bayes classifier. The dashboard visualizes:
     *   The generated data points.
     *   The resulting ROC curve and its Area Under the Curve (AUC).
     *   Key performance metrics (Accuracy, Precision, Recall, etc.).
