@@ -6,6 +6,11 @@ Welcome to the Interactive Classification Dashboards project! This repository co
 
 ## 🚀 About This Project
 
+### 🌐 Live Demos
+
+*   **[Direct Classification Dashboard](https://berangerthomas.github.io/SchoolOfStatistics/direct_classifier.html)**
+*   **[Inverse Classification Dashboard](https://berangerthomas.github.io/SchoolOfStatistics/inverse_classifier.html)**
+
 This project provides two distinct interactive dashboards:
 
 1.  **Direct Classification Dashboard (`direct_classifier.html`)**: This tool allows you to generate a synthetic 2D dataset for two classes. You can adjust the **class separation** and **data spread (standard deviation)** to see how these parameters affect the performance of a Gaussian Naive Bayes classifier. The dashboard visualizes:
