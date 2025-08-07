@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V5.2 - Interactive Classification Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="src/css/inverse_style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>V5.2 - Interactive Classification Dashboard</h1>
+
+        <div class="floating-controls" id="floatingControls">
+            <div class="controls-title" id="controlsTitle">🎛️ Result Controls</div>
+            <div class="matrix-grid">
+                <div class="control-group">
+                    <div class="control-label">True Negatives (TN) <span class="lock-toggle" data-param="tn">🔓</span>
+                    </div>
+                    <input type="range" min="0" max="200" value="80" class="slider" id="tnSlider">
+                    <div class="slider-value" id="tnValue">80</div>
+                </div>
+                <div class="control-group">
+                    <div class="control-label">False Positives (FP) <span class="lock-toggle" data-param="fp">🔓</span>
+                    </div>
+                    <input type="range" min="0" max="200" value="20" class="slider" id="fpSlider">
+                    <div class="slider-value" id="fpValue">20</div>
+                </div>
+                <div class="control-group">
+                    <div class="control-label">False Negatives (FN) <span class="lock-toggle" data-param="fn">🔓</span>
+                    </div>
+                    <input type="range" min="0" max="200" value="30" class="slider" id="fnSlider">
+                    <div class="slider-value" id="fnValue">30</div>
+                </div>
+                <div class="control-group">
+                    <div class="control-label">True Positives (TP) <span class="lock-toggle" data-param="tp">🔓</span>
+                    </div>
+                    <input type="range" min="0" max="200" value="70" class="slider" id="tpSlider">
+                    <div class="slider-value" id="tpValue">70</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <div class="chart-title">🎯 ROC Curve & AUC</div>
+                <div class="chart-container"><canvas id="rocChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">📈 Performance Metrics</div>
+                <div class="chart-container"><canvas id="metricsChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">📋 Confusion Matrix</div>
+                <div class="matrix-wrapper">
+                    <div class="matrix-ylabel">Each row corresponds to the TRUE class</div>
+                    <div class="matrix-main">
+                        <canvas id="matrixChart" width="350" height="350"></canvas>
+                        <div class="matrix-xlabel">Each column corresponds to the PREDICTED class</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">📊 Classifier Scores Distribution</div>
+                <div class="chart-container"><canvas id="scoresChart"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <a href="https://github.com/berangerthomas/SchoolOfStatistics" target="_blank"
+            rel="noopener noreferrer">Project's GitHub</a>
+    </footer>
+
+    <script src="src/js/inverse_classifier.js"></script>
+</body>
+
+</html>
