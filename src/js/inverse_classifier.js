@@ -1,5 +1,37 @@
 // --- GLOBAL VARIABLES ---
 let scoresChart, rocChart, metricsChart;
+const metricExplanations = {
+    'AUC': {
+        description: "Measures the model's ability to distinguish between positive and negative classes. It represents the probability that a random positive instance is ranked higher than a random negative instance.",
+        range: "Ranges from 0 (worst) to 1 (best). 0.5 is random chance.",
+        formula: "Area Under the ROC Curve"
+    },
+    'Accuracy': {
+        description: "The proportion of all predictions that are correct. It's a general measure of the model's performance.",
+        range: "Ranges from 0 (worst) to 1 (best).",
+        formula: "(TP + TN) / (TP + TN + FP + FN)"
+    },
+    'Precision': {
+        description: "Of all the positive predictions made by the model, how many were actually positive. High precision indicates a low false positive rate.",
+        range: "Ranges from 0 (worst) to 1 (best).",
+        formula: "TP / (TP + FP)"
+    },
+    'Recall': {
+        description: "Of all the actual positive instances, how many did the model correctly identify. Also known as Sensitivity or True Positive Rate.",
+        range: "Ranges from 0 (worst) to 1 (best).",
+        formula: "TP / (TP + FN)"
+    },
+    'Specificity': {
+        description: "Of all the actual negative instances, how many did the model correctly identify. Also known as True Negative Rate.",
+        range: "Ranges from 0 (worst) to 1 (best).",
+        formula: "TN / (TN + FP)"
+    },
+    'F1-Score': {
+        description: "The harmonic mean of Precision and Recall. It provides a single score that balances both concerns, useful for imbalanced classes.",
+        range: "Ranges from 0 (worst) to 1 (best).",
+        formula: "2 * (Precision * Recall) / (Precision + Recall)"
+    }
+};
 let lockState = { tp: false, fp: false, tn: false, fn: false };
 let currentState = { tp: 70, fp: 20, tn: 80, fn: 30 };
 const TOTAL_SAMPLES = 200;
@@ -87,8 +119,13 @@ function drawConfusionMatrix(canvasId, tp, fp, tn, fn) {
     ctx.fillStyle = '#333'; ctx.font = 'bold 14px Segoe UI';
     ctx.fillText('Negative', margin + cellW / 2, gridH + 20);
     ctx.fillText('Positive', margin + cellW + cellW / 2, gridH + 20);
-    ctx.save(); ctx.translate(20, gridH / 2); ctx.rotate(-Math.PI / 2);
-    ctx.fillText('Positive', 0, 0); ctx.fillText('Negative', -cellH, 0);
+    ctx.save();
+    ctx.translate(20, gridH / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('Positive', -cellH / 2, 0);
+    ctx.fillText('Negative', cellH / 2, 0);
     ctx.restore();
 }
 
@@ -178,7 +215,42 @@ function initCharts() {
         type: 'bar',
         data: { labels: ['AUC', 'Accuracy', 'Precision', 'Recall', 'Specificity', 'F1-Score'], datasets: [{ data: [], backgroundColor: ['#673AB7', '#009688', '#1E88E5', '#388E3C', '#FB8C00', '#9C27B0'] }] },
         plugins: [customDatalabelsPlugin],
-        options: { responsive: true, maintainAspectRatio: false, indexAxis: 'x', animation: { duration: 0 }, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { y: { beginAtZero: true, max: 1 } } }
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'x',
+            animation: { duration: 0 },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    enabled: true,
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    titleColor: '#000',
+                    bodyColor: '#000',
+                    borderColor: '#555',
+                    borderWidth: 1,
+                    padding: 15,
+                    displayColors: false,
+                    callbacks: {
+                        label: function (context) {
+                            const label = context.chart.data.labels[context.dataIndex];
+                            const value = context.raw.toFixed(3);
+                            const explanation = metricExplanations[label];
+                            let tooltipText = [`${label}: ${value}`];
+                            if (explanation) {
+                                tooltipText.push('');
+                                const roleLines = `Role: ${explanation.description}`.match(/.{1,50}(\s|$)/g) || [];
+                                roleLines.forEach(line => tooltipText.push(line.trim()));
+                                tooltipText.push(`Range: ${explanation.range}`);
+                                tooltipText.push(`Formula: ${explanation.formula}`);
+                            }
+                            return tooltipText;
+                        }
+                    }
+                }
+            },
+            scales: { y: { beginAtZero: true, max: 1 } }
+        }
     });
 }
 
