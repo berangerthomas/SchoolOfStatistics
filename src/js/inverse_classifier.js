@@ -33,8 +33,8 @@ const metricExplanations = {
     }
 };
 let lockState = { tp: false, fp: false, tn: false, fn: false };
-let currentState = { tp: 70, fp: 20, tn: 80, fn: 30 };
-const TOTAL_SAMPLES = 200;
+let currentState = { tp: 40, fp: 10, tn: 45, fn: 5 };
+const TOTAL_SAMPLES = 100;
 
 // --- SIMULATION & CALCULATIONS ---
 function randomGaussian(mean = 0, stdDev = 1) {
@@ -271,8 +271,10 @@ window.addEventListener('load', function () {
     initCharts();
     Object.keys(currentState).forEach(param => {
         const slider = document.getElementById(`${param}Slider`);
-        slider.addEventListener('input', () => document.getElementById(`${param}Value`).textContent = slider.value);
-        slider.addEventListener('change', () => adjustValues(param, parseInt(slider.value)));
+        slider.addEventListener('input', () => {
+            document.getElementById(`${param}Value`).textContent = slider.value;
+            adjustValues(param, parseInt(slider.value));
+        });
     });
     document.querySelectorAll('.lock-toggle').forEach(lock => {
         lock.addEventListener('click', function () {
