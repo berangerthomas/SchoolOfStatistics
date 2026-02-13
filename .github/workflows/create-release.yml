@@ -1,0 +1,44 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Extract changelog entry
+        id: get_changelog
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          # Extract content between ## [VERSION] and next ## [ or end of file
+          CHANGELOG=$(awk '/^## \['$VERSION'\]/{found=1; next} /^## \[/{found=0} found' CHANGELOG.md | sed '/^$/d')
+          # If empty, try without 'v' prefix
+          if [ -z "$CHANGELOG" ]; then
+            CHANGELOG=$(awk '/^## \['${VERSION#v}'\]/{found=1; next} /^## \[/{found=0} found' CHANGELOG.md | sed '/^$/d')
+          fi
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: ${{ steps.get_version.outputs.VERSION }}
+          body: ${{ steps.get_changelog.outputs.CHANGELOG }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
