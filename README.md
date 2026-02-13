@@ -1,3 +1,11 @@
+---
+title: School of Statistics
+colorFrom: blue
+colorTo: indigo
+sdk: static
+pinned: false
+---
+
 # School of Statistics
 
 [![Documentation](https://img.shields.io/badge/Documentation-Sphinx-blue.svg)](https://berangerthomas.github.io/SchoolOfStatistics/)
