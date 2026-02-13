@@ -74,15 +74,11 @@ No dependencies to install — all libraries are loaded via CDN.
 
 ## Versioning
 
-This project follows [Semantic Versioning](https://semver.org/). See [CHANGELOG.md](CHANGELOG.md) for release history.
-
-Current version: **0.2.0**
+See [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ## Roadmap
 
-Detailed specifications for planned pages are documented in `IDEAS.md`.
-
-### À venir
+### Upcoming
 
 - **Bias-Variance Tradeoff Explorer**: visualize bias-variance decomposition with polynomial fitting of increasing degree
 - **k-Nearest Neighbors Playground**: interactive point placement and k-NN decision boundary visualization
