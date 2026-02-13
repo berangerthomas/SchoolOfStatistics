@@ -1,12 +1,8 @@
----
-title: School of Statistics
-colorFrom: blue
-colorTo: indigo
-sdk: static
-pinned: false
----
-
 # School of Statistics
+
+[![Documentation](https://img.shields.io/badge/Documentation-Sphinx-blue.svg)](https://berangerthomas.github.io/SchoolOfStatistics/)
+[![Demo](https://img.shields.io/badge/Demo-Hugging%20Face-orange.svg)](https://huggingface.co/spaces/berangerthomas/schoolofstatistics)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 Interactive visualizations for exploring statistical and machine learning concepts. Each page runs entirely in the browser (HTML, CSS, JavaScript with Chart.js) without requiring a server or build step.
 
@@ -14,22 +10,17 @@ Interactive visualizations for exploring statistical and machine learning concep
 
 ### Classification
 
-| Page | Description |
-|------|-------------|
-| Direct Classification | Generate synthetic 2D datasets and observe how class separation affects Gaussian Naive Bayes classifier performance. Displays ROC curve, AUC, confusion matrix, and standard metrics (accuracy, precision, recall, specificity, F1-score). |
-| Inverse Classification | Directly set confusion matrix values (TP, FP, TN, FN) and observe resulting metrics, ROC curve, and simulated score distributions. Parameters can be locked to constrain totals. |
+- **[Direct Classification](direct_classifier.html)**: Generate synthetic 2D datasets and observe how class separation affects Gaussian Naive Bayes classifier performance. Displays ROC curve, AUC, confusion matrix, and standard metrics (accuracy, precision, recall, specificity, F1-score).
+
+- **[Inverse Classification](inverse_classifier.html)**: Directly set confusion matrix values (TP, FP, TN, FN) and observe resulting metrics, ROC curve, and simulated score distributions. Parameters can be locked to constrain totals.
 
 ### Regression
 
-| Page | Description |
-|------|-------------|
-| Linear Regression | Interactive point placement on canvas with linear or polynomial regression fitting. Displays residuals, coefficient of determination (R²), and regression diagnostics. Supports zoom, point dragging, and confidence band display. |
+- **[Linear Regression](linear_regression.html)**: Interactive point placement on canvas with linear or polynomial regression fitting. Displays residuals, coefficient of determination (R²), and regression diagnostics. Supports zoom, point dragging, and confidence band display.
 
 ### Signal Processing
 
-| Page | Description |
-|------|-------------|
-| Fourier Transform | Compose signals from sine waves and visualize their frequency spectrum. Up to 4 components with frequency, amplitude, and phase control. Displays time-domain signal, magnitude spectrum, phase spectrum, and signal metrics (sampling rate, Nyquist frequency, frequency resolution, total power, RMS). |
+- **[Fourier Transform](fourier_transform.html)**: Compose signals from sine waves and visualize their frequency spectrum. Up to 4 components with frequency, amplitude, and phase control. Displays time-domain signal, magnitude spectrum, phase spectrum, and signal metrics (sampling rate, Nyquist frequency, frequency resolution, total power, RMS).
 
 ## Project Structure
 
@@ -37,11 +28,8 @@ Interactive visualizations for exploring statistical and machine learning concep
 .
 ├── direct_classifier.html          # Direct classification (Naive Bayes)
 ├── inverse_classifier.html         # Inverse classification (confusion matrix)
-├── logistic_regression.html        # Logistic regression
 ├── linear_regression.html          # Linear/polynomial regression
 ├── fourier_transform.html          # Fourier transform
-├── embedding_distances.html        # Embedding space distances
-├── IDEAS.md                        # Specifications for planned pages
 ├── CHANGELOG.md                    # Version history
 ├── LICENSE
 ├── README.md
@@ -53,12 +41,10 @@ Interactive visualizations for exploring statistical and machine learning concep
     │   ├── direct_classifier.css   # Page-specific styles
     │   ├── embedding_distances.css
     │   ├── fourier_transform.css
-    │   ├── linear_regression.css
-    │   └── logistic_regression.css
+    │   └── linear_regression.css
     └── js/
         ├── common.js               # Shared utilities (metrics, ROC, matrices, drag, etc.)
         ├── direct_classifier.js
-        ├── embedding_distances.js
         ├── fourier_transform.js
         ├── inverse_classifier.js
         ├── linear_regression.js
@@ -68,7 +54,7 @@ Interactive visualizations for exploring statistical and machine learning concep
 ## Usage
 
 1. Clone the repository.
-2. Open any `.html` file in a web browser.
+2. Open any `.html` file in your web browser.
 
 No dependencies to install — all libraries are loaded via CDN.
 
