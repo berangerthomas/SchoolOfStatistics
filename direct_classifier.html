@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Classification Dashboard</title>
+    <title>Direct Classification Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>Pro Classification Dashboard</h1>
+        <h1>Direct Classification Dashboard</h1>
 
         <div class="floating-controls" id="floatingControls">
-            <div class="controls-title" id="controlsTitle">🎛️ Data Controls</div>
+            <div class="controls-title" id="controlsTitle">Data Controls</div>
             <div class="controls-grid">
                 <div class="control-group">
                     <label for="separationSlider" class="control-label">Class Separation</label>
@@ -31,15 +31,15 @@
 
         <div class="charts-container">
             <div class="chart-card">
-                <div class="chart-title">🎯 ROC Curve & AUC</div>
+                <div class="chart-title">ROC Curve & AUC</div>
                 <div class="chart-container"><canvas id="rocChart"></canvas></div>
             </div>
             <div class="chart-card">
-                <div class="chart-title">📈 Performance Metrics</div>
+                <div class="chart-title">Performance Metrics</div>
                 <div class="chart-container"><canvas id="metricsChart"></canvas></div>
             </div>
             <div class="chart-card">
-                <div class="chart-title">📋 Confusion Matrix</div>
+                <div class="chart-title">Confusion Matrix</div>
                 <div class="confusion-matrix-layout">
                     <div class="matrix-ylabel">TRUE class</div>
                     <div class="matrix-canvas-container">
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="chart-card">
-                <div class="chart-title">📊 Data Distribution</div>
+                <div class="chart-title">Data Distribution</div>
                 <div class="chart-container"><canvas id="dataChart"></canvas></div>
             </div>
         </div>
@@ -61,6 +61,7 @@
             rel="noopener noreferrer">Project's GitHub</a>
     </footer>
 
+    <script src="src/js/common.js"></script>
     <script src="src/js/direct_classifier.js"></script>
 </body>
 

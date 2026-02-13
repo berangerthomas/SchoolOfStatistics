@@ -1,74 +1,102 @@
 ---
----
-title: School of Statistics - Interactive Classification Dashboards
-emoji: 📊
+title: School of Statistics
 colorFrom: blue
 colorTo: indigo
 sdk: static
 pinned: false
 ---
 
-# School of Statistics - Interactive Classification Dashboards
+# School of Statistics
 
-![Logo](./src/assets/logo.jpg)
+Interactive visualizations for exploring statistical and machine learning concepts. Each page runs entirely in the browser (HTML, CSS, JavaScript with Chart.js) without requiring a server or build step.
 
-Welcome to the Interactive Classification Dashboards project! This repository contains a set of tools designed to help users understand the core concepts of binary classification in machine learning through hands-on, visual interaction.
+## Available Pages
 
-## 🚀 About This Project
+### Classification
 
-### 🌐 Live Demos
+| Page | Description |
+|------|-------------|
+| [Direct Classification](https://berangerthomas.github.io/SchoolOfStatistics/direct_classifier.html) | Generate synthetic 2D datasets and observe how class separation affects Gaussian Naive Bayes classifier performance. Displays ROC curve, AUC, confusion matrix, and standard metrics (accuracy, precision, recall, specificity, F1-score). |
+| [Inverse Classification](https://berangerthomas.github.io/SchoolOfStatistics/inverse_classifier.html) | Directly set confusion matrix values (TP, FP, TN, FN) and observe resulting metrics, ROC curve, and simulated score distributions. Parameters can be locked to constrain totals. |
 
-*   **[Direct Classification Dashboard](https://berangerthomas.github.io/SchoolOfStatistics/direct_classifier.html)**
-*   **[Inverse Classification Dashboard](https://berangerthomas.github.io/SchoolOfStatistics/inverse_classifier.html)**
+### Regression
 
-This project provides two distinct interactive dashboards:
+| Page | Description |
+|------|-------------|
+| [Linear Regression](https://berangerthomas.github.io/SchoolOfStatistics/linear_regression.html) | Interactive point placement on canvas with linear or polynomial regression fitting. Displays residuals, coefficient of determination (R²), and regression diagnostics. Supports zoom, point dragging, and confidence band display. |
 
-1.  **Direct Classification Dashboard (`direct_classifier.html`)** : This tool allows you to generate a synthetic 2D dataset for two classes. You can adjust the **class separation** and **data spread (standard deviation)** to see how these parameters affect the performance of a Gaussian Naive Bayes classifier. The dashboard visualizes:
-    *   The generated data points.
-    *   The resulting ROC curve and its Area Under the Curve (AUC).
-    *   Key performance metrics (Accuracy, Precision, Recall, etc.).
-    *   A detailed confusion matrix.
+### Signal Processing
 
-2.  **Inverse Classification Dashboard (`inverse_classifier.html`)** : This tool works in reverse. Instead of generating data, you directly manipulate the values of the **confusion matrix** (True Positives, False Positives, True Negatives, and False Negatives). The application then simulates a distribution of classifier scores that would lead to your specified matrix and visualizes the resulting metrics, ROC curve, and score distribution. This provides a unique, intuitive way to understand the relationships between the confusion matrix and other performance indicators.
+| Page | Description |
+|------|-------------|
+| [Fourier Transform](https://berangerthomas.github.io/SchoolOfStatistics/fourier_transform.html) | Compose signals from sine waves and visualize their frequency spectrum. Up to 4 components with frequency, amplitude, and phase control. Displays time-domain signal, magnitude spectrum, phase spectrum, and signal metrics (sampling rate, Nyquist frequency, frequency resolution, total power, RMS). |
 
-## 📂 Project Structure
-
-The project has been organized into a clean and maintainable structure:
+## Project Structure
 
 ```
 .
-├── direct_classifier.html
-├── inverse_classifier.html
+├── direct_classifier.html          # Direct classification (Naive Bayes)
+├── inverse_classifier.html         # Inverse classification (confusion matrix)
+├── logistic_regression.html        # Logistic regression
+├── linear_regression.html          # Linear/polynomial regression
+├── fourier_transform.html          # Fourier transform
+├── embedding_distances.html        # Embedding space distances
+├── IDEAS.md                        # Specifications for planned pages
+├── CHANGELOG.md                    # Version history
 ├── LICENSE
 ├── README.md
-└── src
-    ├── assets
+└── src/
+    ├── assets/
     │   └── logo.jpg
-    ├── css
-    │   ├── inverse_style.css
-    │   └── style.css
-    └── js
+    ├── css/
+    │   ├── style.css               # Shared base styles
+    │   ├── direct_classifier.css   # Page-specific styles
+    │   ├── embedding_distances.css
+    │   ├── fourier_transform.css
+    │   ├── linear_regression.css
+    │   └── logistic_regression.css
+    └── js/
+        ├── common.js               # Shared utilities (metrics, ROC, matrices, drag, etc.)
         ├── direct_classifier.js
-        └── inverse_classifier.js
+        ├── embedding_distances.js
+        ├── fourier_transform.js
+        ├── inverse_classifier.js
+        ├── linear_regression.js
+        └── logistic_regression.js
 ```
 
-*   **`direct_classifier.html`**: The main page for the direct classification tool.
-*   **`inverse_classifier.html`**: The main page for the inverse classification tool.
-*   **`src/`**: Contains all source assets.
-    *   **`assets/`**: Stores static assets like the project logo.
-    *   **`css/`**: Contains the stylesheets for the HTML pages.
-    *   **`js/`**: Contains the JavaScript logic for each interactive dashboard.
-*   **`LICENSE`**: The project's license file.
-*   **`README.md`**: This file.
+## Usage
 
-## 🛠️ How to Use
+1. Clone the repository.
+2. Open any `.html` file in a web browser.
 
-1.  Clone this repository to your local machine.
-2.  Open either `direct_classifier.html` or `inverse_classifier.html` in your web browser.
-3.  No local server is needed! All the logic is self-contained in the HTML, CSS, and JavaScript files.
+No dependencies to install — all libraries are loaded via CDN.
 
-Interact with the sliders and controls on each page to explore the concepts of classification.
+## Versioning
 
-## 📄 License
+This project follows [Semantic Versioning](https://semver.org/). See [CHANGELOG.md](CHANGELOG.md) for release history.
 
-This project is distributed under the terms of the license specified in the `LICENSE` file.
+Current version: **0.2.0**
+
+## Roadmap
+
+Detailed specifications for planned pages are documented in `IDEAS.md`.
+
+### À venir
+
+- **Bias-Variance Tradeoff Explorer**: visualize bias-variance decomposition with polynomial fitting of increasing degree
+- **k-Nearest Neighbors Playground**: interactive point placement and k-NN decision boundary visualization
+- **Gradient Descent Visualizer**: real-time navigation on 2D loss surfaces, optimizer comparison
+- **Principal Component Analysis (PCA) Step-by-Step**: Gaussian cloud generation and principal component visualization
+- **Clustering Algorithms Visualizer**: k-Means and DBSCAN comparison on various dataset shapes
+- **Neural Network Architecture & Forward Pass Visualizer**: layer-by-layer fully-connected network construction
+- **Tokenization & Embedding Visualizer**: tokenization and 2D embedding space projection
+- **Attention Mechanism Visualizer**: Transformer attention mechanism visualization
+- **Probability Distributions Explorer**: exploration of standard distributions (Normal, Uniform, Exponential, Poisson, Binomial, Beta, Gamma, Chi-squared)
+- **Markov Chain Text Generator**: Markov chain construction and text generation
+- **A/B Testing Calculator**: statistical tool for hypothesis testing
+- **Voice Signal Waveform Analyzer**: audio recording, waveform display, spectrogram computation, and dominant frequency identification
+
+## License
+
+See the [LICENSE](LICENSE) file.

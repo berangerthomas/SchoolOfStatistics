@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fourier Transform Visualizer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/fourier_transform.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Fourier Transform Visualizer</h1>
+        <p class="subtitle">Compose signals from sine waves and visualize their frequency spectrum</p>
+
+        <div class="floating-controls" id="floatingControls">
+            <div class="controls-title" id="controlsTitle">Signal Controls</div>
+            <div class="controls-grid">
+                <!-- Wave 1 -->
+                <div class="wave-section">
+                    <div class="wave-header">
+                        <label class="control-label">
+                            <input type="checkbox" id="enableWave1" class="checkbox-input" checked>
+                            Wave 1
+                        </label>
+                        <span class="wave-color" style="background-color: #1976d2;"></span>
+                    </div>
+                    <div class="control-group">
+                        <label for="freq1" class="control-label">Frequency (Hz)</label>
+                        <input type="range" min="0" max="50" value="5" step="1" class="slider" id="freq1">
+                        <div class="slider-value" id="freq1Value">5 Hz</div>
+                    </div>
+                    <div class="control-group">
+                        <label for="amp1" class="control-label">Amplitude</label>
+                        <input type="range" min="0" max="10" value="5" step="0.1" class="slider" id="amp1">
+                        <div class="slider-value" id="amp1Value">5.0</div>
+                    </div>
+                    <div class="control-group">
+                        <label for="phase1" class="control-label">Phase (°)</label>
+                        <input type="range" min="0" max="360" value="0" step="15" class="slider" id="phase1">
+                        <div class="slider-value" id="phase1Value">0°</div>
+                    </div>
+                </div>
+
+                <!-- Wave 2 -->
+                <div class="wave-section">
+                    <div class="wave-header">
+                        <label class="control-label">
+                            <input type="checkbox" id="enableWave2" class="checkbox-input" checked>
+                            Wave 2
+                        </label>
+                        <span class="wave-color" style="background-color: #d32f2f;"></span>
+                    </div>
+                    <div class="control-group">
+                        <label for="freq2" class="control-label">Frequency (Hz)</label>
+                        <input type="range" min="0" max="50" value="15" step="1" class="slider" id="freq2">
+                        <div class="slider-value" id="freq2Value">15 Hz</div>
+                    </div>
+                    <div class="control-group">
+                        <label for="amp2" class="control-label">Amplitude</label>
+                        <input type="range" min="0" max="10" value="3" step="0.1" class="slider" id="amp2">
+                        <div class="slider-value" id="amp2Value">3.0</div>
+                    </div>
+                    <div class="control-group">
+                        <label for="phase2" class="control-label">Phase (°)</label>
+                        <input type="range" min="0" max="360" value="90" step="15" class="slider" id="phase2">
+                        <div class="slider-value" id="phase2Value">90°</div>
+                    </div>
+                </div>
+
+                <!-- Wave 3 -->
+                <div class="wave-section">
+                    <div class="wave-header">
+                        <label class="control-label">
+                            <input type="checkbox" id="enableWave3" class="checkbox-input">
+                            Wave 3
+                        </label>
+                        <span class="wave-color" style="background-color: #388e3c;"></span>
+                    </div>
+                    <div class="control-group">
+                        <label for="freq3" class="control-label">Frequency (Hz)</label>
+                        <input type="range" min="0" max="50" value="25" step="1" class="slider" id="freq3">
+                        <div class="slider-value" id="freq3Value">25 Hz</div>
+                    </div>
+                    <div class="control-group">
+                        <label for="amp3" class="control-label">Amplitude</label>
+                        <input type="range" min="0" max="10" value="0" step="0.1" class="slider" id="amp3">
+                        <div class="slider-value" id="amp3Value">0.0</div>
+                    </div>
+                    <div class="control-group">
+                        <label for="phase3" class="control-label">Phase (°)</label>
+                        <input type="range" min="0" max="360" value="0" step="15" class="slider" id="phase3">
+                        <div class="slider-value" id="phase3Value">0°</div>
+                    </div>
+                </div>
+
+                <!-- Wave 4 -->
+                <div class="wave-section">
+                    <div class="wave-header">
+                        <label class="control-label">
+                            <input type="checkbox" id="enableWave4" class="checkbox-input">
+                            Wave 4
+                        </label>
+                        <span class="wave-color" style="background-color: #f57c00;"></span>
+                    </div>
+                    <div class="control-group">
+                        <label for="freq4" class="control-label">Frequency (Hz)</label>
+                        <input type="range" min="0" max="50" value="35" step="1" class="slider" id="freq4">
+                        <div class="slider-value" id="freq4Value">35 Hz</div>
+                    </div>
+                    <div class="control-group">
+                        <label for="amp4" class="control-label">Amplitude</label>
+                        <input type="range" min="0" max="10" value="0" step="0.1" class="slider" id="amp4">
+                        <div class="slider-value" id="amp4Value">0.0</div>
+                    </div>
+                    <div class="control-group">
+                        <label for="phase4" class="control-label">Phase (°)</label>
+                        <input type="range" min="0" max="360" value="0" step="15" class="slider" id="phase4">
+                        <div class="slider-value" id="phase4Value">0°</div>
+                    </div>
+                </div>
+
+                <!-- Global Settings -->
+                <div class="wave-section" style="border-top: 2px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md);">
+                    <div class="control-group">
+                        <label for="numSamples" class="control-label">Samples (N)</label>
+                        <input type="range" min="64" max="512" value="256" step="1" class="slider" id="numSamples">
+                        <div class="slider-value" id="numSamplesValue">256</div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">
+                            <input type="checkbox" id="addNoise" class="checkbox-input">
+                            Add Gaussian Noise
+                        </label>
+                    </div>
+                    <div class="control-group" id="noiseLevelGroup" style="opacity: 0.4;">
+                        <label for="noiseLevel" class="control-label">Noise Level (σ)</label>
+                        <input type="range" min="0.1" max="3" value="0.5" step="0.1" class="slider" id="noiseLevel" disabled>
+                        <div class="slider-value" id="noiseLevelValue">0.5</div>
+                    </div>
+                </div>
+
+                <div class="chart-hint" style="margin-top: 8px; font-size: 0.7rem; color: var(--color-text-muted);">
+                    💡 Combine up to 4 sine waves to create complex signals
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <!-- Time Domain Chart -->
+            <div class="chart-card" style="grid-column: span 2;">
+                <div class="chart-title">Time Domain Signal</div>
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="timeDomainChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Magnitude Spectrum -->
+            <div class="chart-card">
+                <div class="chart-title">Magnitude Spectrum |X(f)|</div>
+                <div class="chart-container" style="height: 280px;">
+                    <canvas id="magnitudeChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Phase Spectrum -->
+            <div class="chart-card" id="phaseCard">
+                <div class="chart-title">Phase Spectrum ∠X(f)</div>
+                <div class="chart-container" style="height: 280px;">
+                    <canvas id="phaseChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Signal Info -->
+            <div class="chart-card" style="grid-column: span 2;">
+                <div class="chart-title">Signal Information</div>
+                <div class="metrics-display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md);">
+                    <div class="metric-item">
+                        <span class="metric-label">Sampling Rate (Fs)</span>
+                        <span class="metric-value" id="samplingRate">-</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Nyquist Frequency</span>
+                        <span class="metric-value" id="nyquistFreq">-</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Frequency Resolution (Δf)</span>
+                        <span class="metric-value" id="freqResolution">-</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Signal Duration</span>
+                        <span class="metric-value" id="signalDuration">-</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Total Power</span>
+                        <span class="metric-value" id="totalPower">-</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">RMS Amplitude</span>
+                        <span class="metric-value" id="rmsAmplitude">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <a href="https://github.com/berangerthomas/SchoolOfStatistics" target="_blank"
+            rel="noopener noreferrer">Project's GitHub</a>
+    </footer>
+
+    <script src="src/js/common.js"></script>
+    <script src="src/js/fourier_transform.js"></script>
+</body>
+
+</html>

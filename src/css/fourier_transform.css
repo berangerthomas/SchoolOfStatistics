@@ -1,0 +1,101 @@
+/* ============================================================
+   Fourier Transform Visualizer - Specific Styles
+   ============================================================ */
+
+/* Wave Section Styling */
+.wave-section {
+    background: var(--color-surface-alt);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.wave-section:last-child {
+    margin-bottom: 0;
+}
+
+.wave-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+}
+
+.wave-header .control-label {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.wave-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Checkbox input styling */
+.checkbox-input {
+    margin-right: var(--space-sm);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--color-accent);
+}
+
+/* Disabled wave section styling */
+.wave-section.disabled {
+    opacity: 0.5;
+}
+
+.wave-section.disabled .slider {
+    pointer-events: none;
+}
+
+/* Control group spacing in wave sections */
+.wave-section .control-group {
+    margin-bottom: var(--space-sm);
+}
+
+.wave-section .control-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Phase spectrum card transition */
+#phaseCard {
+    transition: opacity var(--transition-normal);
+}
+
+/* Metrics display enhancements */
+.metrics-display .metric-item {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-surface);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+}
+
+/* Frequency value styling */
+#freq1Value, #freq2Value, #freq3Value, #freq4Value {
+    color: var(--color-accent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .metrics-display {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .wave-section {
+        padding: var(--space-sm);
+    }
+    
+    .metrics-display .metric-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-xs);
+    }
+}

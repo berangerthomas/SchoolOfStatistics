@@ -1,0 +1,99 @@
+/* ============================================================
+   Linear Regression Playground - Specific Styles
+   ============================================================ */
+
+/* Main chart takes full width */
+#mainChart {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+/* Custom checkbox styling */
+.control-group label.control-label:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast);
+}
+
+.control-group label.control-label:has(input[type="checkbox"]):hover {
+    background-color: var(--color-surface-alt);
+}
+
+.checkbox-input {
+    margin-right: var(--space-sm);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--color-accent);
+}
+
+/* Stats panel styling */
+.metrics-display {
+    padding: var(--space-md);
+}
+
+.metric-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.metric-item:last-child {
+    border-bottom: none;
+}
+
+.metric-label {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+}
+
+.metric-value {
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* Dragging state for points */
+.canvas-container {
+    position: relative;
+}
+
+/* Button variations */
+.button-start {
+    width: 100%;
+    margin: var(--space-xs) 0;
+}
+
+/* Hint box styling */
+.chart-hint {
+    background: var(--color-accent-light);
+    border-left: 3px solid var(--color-accent);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.chart-hint strong {
+    color: var(--color-text-primary);
+}
+
+/* Canvas cursor states */
+#mainChart {
+    cursor: crosshair;
+}
+
+#mainChart.dragging {
+    cursor: grabbing;
+}
+
+#mainChart.hover-point {
+    cursor: grab;
+}

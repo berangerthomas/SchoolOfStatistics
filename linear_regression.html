@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Regression Playground</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/linear_regression.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Linear Regression Playground</h1>
+
+        <div class="floating-controls" id="floatingControls">
+            <div class="controls-title" id="controlsTitle">Regression Controls</div>
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label for="degreeSlider" class="control-label">Polynomial Degree</label>
+                    <input type="range" min="1" max="10" value="1" step="1" class="slider" id="degreeSlider">
+                    <div class="slider-value" id="degreeValue">1</div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">
+                        <input type="checkbox" id="showResiduals" class="checkbox-input">
+                        Show Residuals
+                    </label>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">
+                        <input type="checkbox" id="showConfidence" class="checkbox-input">
+                        Show Confidence Band (±2σ)
+                    </label>
+                </div>
+                <div class="control-group">
+                    <button id="clearPointsBtn" class="button-start">Clear All Points</button>
+                </div>
+                <div class="control-group">
+                    <button id="addRandomBtn" class="button-start" style="background-color: var(--color-accent);">Add 5 Random Points</button>
+                </div>
+                <div class="control-group">
+                    <button id="resetZoomBtn" class="button-start" style="background-color: #757575;">↺ Reset Zoom</button>
+                </div>
+                <div class="chart-hint" style="margin-top: 8px; font-size: 0.7rem; color: var(--color-text-muted);">
+                    💡 Roulette souris : zoomer/dézoomer
+                </div>
+            </div>
+            <div class="chart-hint" style="margin-top: 16px; font-size: 0.75rem;">
+                <strong>How to use:</strong><br>
+                • Click on the main chart to add points<br>
+                • Right-click a point to remove it<br>
+                • Drag a point to move it
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card" style="grid-column: span 2;">
+                <div class="chart-title">Data & Regression Fit</div>
+                <div class="chart-container" style="height: 350px;">
+                    <canvas id="mainChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Residual Plot</div>
+                <div class="chart-container">
+                    <canvas id="residualChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Statistics</div>
+                <div class="metrics-display">
+                    <div class="metric-item" title="Proportion of variance explained by the model">
+                        <span class="metric-label">R² (Coefficient of Determination)</span>
+                        <span class="metric-value" id="r2Value">-</span>
+                    </div>
+                    <div class="metric-item" title="R² adjusted for the number of predictors">
+                        <span class="metric-label">Adjusted R²</span>
+                        <span class="metric-value" id="adjustedR2Value">-</span>
+                    </div>
+                    <div class="metric-item" title="Mean Squared Error">
+                        <span class="metric-label">MSE</span>
+                        <span class="metric-value" id="mseValue">-</span>
+                    </div>
+                    <div class="metric-item" title="Mean Absolute Error">
+                        <span class="metric-label">MAE</span>
+                        <span class="metric-value" id="maeValue">-</span>
+                    </div>
+                    <div class="metric-item" title="Number of data points">
+                        <span class="metric-label">Number of Points</span>
+                        <span class="metric-value" id="nPointsValue">-</span>
+                    </div>
+                    <div class="metric-item" title="Root Mean Squared Error">
+                        <span class="metric-label">RMSE</span>
+                        <span class="metric-value" id="rmseValue">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <a href="https://github.com/berangerthomas/SchoolOfStatistics" target="_blank"
+            rel="noopener noreferrer">Project's GitHub</a>
+    </footer>
+
+    <script src="src/js/common.js"></script>
+    <script src="src/js/linear_regression.js"></script>
+</body>
+
+</html>
