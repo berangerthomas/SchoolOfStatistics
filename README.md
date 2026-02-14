@@ -20,17 +20,17 @@ Interactive visualizations for exploring statistical and machine learning concep
 
 ### Classification
 
-- **[Direct Classification](direct_classifier.html)**: Generate synthetic 2D datasets and observe how class separation affects Gaussian Naive Bayes classifier performance. Displays ROC curve, AUC, confusion matrix, and standard metrics (accuracy, precision, recall, specificity, F1-score).
+- **[Direct Classification](https://berangerthomas-schoolofstatistics.static.hf.space/direct_classifier.html)**: Generate synthetic 2D datasets and observe how class separation affects Gaussian Naive Bayes classifier performance. Displays ROC curve, AUC, confusion matrix, and standard metrics (accuracy, precision, recall, specificity, F1-score).
 
-- **[Inverse Classification](inverse_classifier.html)**: Directly set confusion matrix values (TP, FP, TN, FN) and observe resulting metrics, ROC curve, and simulated score distributions. Parameters can be locked to constrain totals.
+- **[Inverse Classification](https://berangerthomas-schoolofstatistics.static.hf.space/inverse_classifier.html)**: Directly set confusion matrix values (TP, FP, TN, FN) and observe resulting metrics, ROC curve, and simulated score distributions. Parameters can be locked to constrain totals.
 
 ### Regression
 
-- **[Linear Regression](linear_regression.html)**: Interactive point placement on canvas with linear or polynomial regression fitting. Displays residuals, coefficient of determination (R²), and regression diagnostics. Supports zoom, point dragging, and confidence band display.
+- **[Linear Regression](https://berangerthomas-schoolofstatistics.static.hf.space/linear_regression.html)**: Interactive point placement on canvas with linear or polynomial regression fitting. Displays residuals, coefficient of determination (R²), and regression diagnostics. Supports zoom, point dragging, and confidence band display.
 
 ### Signal Processing
 
-- **[Fourier Transform](fourier_transform.html)**: Compose signals from sine waves and visualize their frequency spectrum. Up to 4 components with frequency, amplitude, and phase control. Displays time-domain signal, magnitude spectrum, phase spectrum, and signal metrics (sampling rate, Nyquist frequency, frequency resolution, total power, RMS).
+- **[Fourier Transform](https://berangerthomas-schoolofstatistics.static.hf.space/fourier_transform.html)**: Compose signals from sine waves and visualize their frequency spectrum. Up to 4 components with frequency, amplitude, and phase control. Displays time-domain signal, magnitude spectrum, phase spectrum, and signal metrics (sampling rate, Nyquist frequency, frequency resolution, total power, RMS).
 
 ## Project Structure
 
