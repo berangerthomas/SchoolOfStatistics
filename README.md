@@ -6,11 +6,13 @@ sdk: static
 pinned: false
 ---
 
-# School of Statistics
+# SOS - School of Statistics
 
 [![Documentation](https://img.shields.io/badge/Documentation-Sphinx-blue.svg)](https://berangerthomas.github.io/SchoolOfStatistics/)
 [![Demo](https://img.shields.io/badge/Demo-Hugging%20Face-orange.svg)](https://huggingface.co/spaces/berangerthomas/schoolofstatistics)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+![SOS - School Of Statistics](https://github.com/berangerthomas/SchoolOfStatistics/blob/main/src/assets/logo.jpg)
 
 Interactive visualizations for exploring statistical and machine learning concepts. Each page runs entirely in the browser (HTML, CSS, JavaScript with Chart.js) without requiring a server or build step.
 
