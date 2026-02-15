@@ -29,8 +29,8 @@
                     </div>
                     <div class="control-group">
                         <label for="freq1" class="control-label">Frequency (Hz)</label>
-                        <input type="range" min="0" max="50" value="5" step="1" class="slider" id="freq1">
-                        <div class="slider-value" id="freq1Value">5 Hz</div>
+                        <input type="range" min="0" max="50" value="4" step="1" class="slider" id="freq1">
+                        <div class="slider-value" id="freq1Value">4 Hz</div>
                     </div>
                     <div class="control-group">
                         <label for="amp1" class="control-label">Amplitude</label>
@@ -55,8 +55,8 @@
                     </div>
                     <div class="control-group">
                         <label for="freq2" class="control-label">Frequency (Hz)</label>
-                        <input type="range" min="0" max="50" value="15" step="1" class="slider" id="freq2">
-                        <div class="slider-value" id="freq2Value">15 Hz</div>
+                        <input type="range" min="0" max="50" value="8" step="1" class="slider" id="freq2">
+                        <div class="slider-value" id="freq2Value">8 Hz</div>
                     </div>
                     <div class="control-group">
                         <label for="amp2" class="control-label">Amplitude</label>
@@ -81,8 +81,8 @@
                     </div>
                     <div class="control-group">
                         <label for="freq3" class="control-label">Frequency (Hz)</label>
-                        <input type="range" min="0" max="50" value="25" step="1" class="slider" id="freq3">
-                        <div class="slider-value" id="freq3Value">25 Hz</div>
+                        <input type="range" min="0" max="50" value="12" step="1" class="slider" id="freq3">
+                        <div class="slider-value" id="freq3Value">12 Hz</div>
                     </div>
                     <div class="control-group">
                         <label for="amp3" class="control-label">Amplitude</label>
@@ -107,8 +107,8 @@
                     </div>
                     <div class="control-group">
                         <label for="freq4" class="control-label">Frequency (Hz)</label>
-                        <input type="range" min="0" max="50" value="35" step="1" class="slider" id="freq4">
-                        <div class="slider-value" id="freq4Value">35 Hz</div>
+                        <input type="range" min="0" max="50" value="16" step="1" class="slider" id="freq4">
+                        <div class="slider-value" id="freq4Value">16 Hz</div>
                     </div>
                     <div class="control-group">
                         <label for="amp4" class="control-label">Amplitude</label>
@@ -125,8 +125,17 @@
                 <!-- Global Settings -->
                 <div class="wave-section" style="border-top: 2px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md);">
                     <div class="control-group">
-                        <label for="numSamples" class="control-label">Samples (N)</label>
-                        <input type="range" min="64" max="512" value="256" step="1" class="slider" id="numSamples">
+                        <label for="numSamples" class="control-label">
+                            Samples (N)
+                            <span class="help-tooltip" title="Limiter N à des puissances de 2 (64, 128, 256, 512) garantit une meilleure résolution spectrale et évite le 'spectral leakage' qui crée des pics parasites dans le spectre de phase.">ℹ️</span>
+                        </label>
+                        <input type="range" min="64" max="512" value="256" step="64" class="slider" id="numSamples" list="powersOf2">
+                        <datalist id="powersOf2">
+                            <option value="64"></option>
+                            <option value="128"></option>
+                            <option value="256"></option>
+                            <option value="512"></option>
+                        </datalist>
                         <div class="slider-value" id="numSamplesValue">256</div>
                     </div>
                     <div class="control-group">

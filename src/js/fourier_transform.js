@@ -202,20 +202,19 @@ function generateCompositeSignal() {
         const amplitude = parseFloat(document.getElementById(`amp${i}`).value);
         const phase = parseInt(document.getElementById(`phase${i}`).value);
         
-        if (amplitude > 0) {
-            const wave = generateSineWave(frequency, amplitude, phase, SAMPLING_RATE, numSamples);
-            individualWaves.push({
-                frequency,
-                amplitude,
-                phase,
-                color: WAVE_COLORS[i - 1],
-                data: wave
-            });
-            
-            // Add to composite signal
-            for (let n = 0; n < numSamples; n++) {
-                signal[n] += wave[n];
-            }
+        // Generate wave even if amplitude is 0, as long as the wave is enabled
+        const wave = generateSineWave(frequency, amplitude, phase, SAMPLING_RATE, numSamples);
+        individualWaves.push({
+            frequency,
+            amplitude,
+            phase,
+            color: WAVE_COLORS[i - 1],
+            data: wave
+        });
+        
+        // Add to composite signal
+        for (let n = 0; n < numSamples; n++) {
+            signal[n] += wave[n];
         }
     }
     
@@ -473,8 +472,12 @@ function updateVisualizations() {
     magnitudeChart.options.scales.x.max = maxFreq;
     
     // Update Phase Spectrum
+    // Use dynamic threshold based on max magnitude to avoid noise in phase spectrum
+    const maxMagnitude = Math.max(...magnitudes);
+    const threshold = Math.max(maxMagnitude * 0.01, 0.001); // At least 1% of max or 0.001
+    
     const significantPhases = filteredFreqIndices
-        .filter(item => magnitudes[item.i] > 0.1) // Only show phase for significant frequencies
+        .filter(item => magnitudes[item.i] > threshold) // Only show phase for significant frequencies
         .map(item => ({
             x: item.f,
             y: phases[item.i]
